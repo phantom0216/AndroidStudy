@@ -1,0 +1,30 @@
+build/
+*.iml
+app/*.iml
+.idea
+local.properties
+.gradle
+# Compiled class file
+*.class
+.DS_Store
+*.hprof
+*.swp
+~.*~
+
+# Log file
+*.log
+*.txt
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+#*.jar
+#*.war
+#*.ear
+#*.zip
+#*.tar.gz
+#*.rar
