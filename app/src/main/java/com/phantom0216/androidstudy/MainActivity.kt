@@ -1,14 +1,16 @@
 package com.phantom0216.androidstudy
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alibaba.android.arouter.launcher.ARouter
 import com.phantom0216.androidstudy.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListener {
 
     private lateinit var mViewBinding: ActivityMainBinding
-    private lateinit var mAdapter: MainActivityAdapter
+    private lateinit var mAdapter: MainActivityRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         mViewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-        mAdapter = MainActivityAdapter()
+        mAdapter = MainActivityRecyclerAdapter().apply {
+            setOnItemClickListener(this@MainActivity)
+        }
         mViewBinding.recyclerView.adapter = mAdapter
     }
 
@@ -30,5 +34,11 @@ class MainActivity : AppCompatActivity() {
         items.add("协程")
 
         mAdapter.onDataSetChanged(items)
+    }
+
+    override fun onItemClick(view: View?, position: Int) {
+        when (position) {
+            0 -> ARouter.getInstance().build(RouterConfig.RECYCLERVIEWNOTIFY).navigation();
+        }
     }
 }

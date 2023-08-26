@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.phantom0216.androidstudy.databinding.MainListItemLayoutBinding
 
-class MainActivityAdapter : RecyclerView.Adapter<MainActivityAdapter.ItemViewHolder>() {
+class MainActivityRecyclerAdapter : BaseRecyclerAdapter<MainActivityRecyclerAdapter.ItemViewHolder>() {
 
     private val mItems = mutableListOf<String>()
 
@@ -16,6 +16,7 @@ class MainActivityAdapter : RecyclerView.Adapter<MainActivityAdapter.ItemViewHol
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
         holder.bindData(mItems[position])
     }
 
