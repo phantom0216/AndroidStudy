@@ -7,7 +7,7 @@ import com.phantom0216.androidstudy.databinding.MainListItemLayoutBinding
 
 class MainActivityRecyclerAdapter : BaseRecyclerAdapter<MainActivityRecyclerAdapter.ItemViewHolder>() {
 
-    private val mItems = mutableListOf<String>()
+    val mItems = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val viewBinding =
