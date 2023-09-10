@@ -32,13 +32,15 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
         val items = mutableListOf<String>()
         items.add("recyclerView")
         items.add("协程")
+        items.add("viewpager2")
 
         mAdapter.onDataSetChanged(items)
     }
 
     override fun onItemClick(view: View?, position: Int) {
         when (position) {
-            0 -> ARouter.getInstance().build(RouterConfig.RECYCLERVIEWNOTIFY).navigation();
+            0 -> ARouter.getInstance().build(RouterConfig.RECYCLERVIEWNOTIFY).navigation()
+            2 -> ARouter.getInstance().build(RouterConfig.VIEWPAGERCLIP).navigation()
         }
     }
 }
