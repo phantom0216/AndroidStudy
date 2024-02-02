@@ -34,7 +34,7 @@ class RecyclerViewNotifyTestActivity : AppCompatActivity() {
     }
 
     private fun bindData() {
-        for (index in 0..10) { //改为100时，不会崩，第3条内容变为4
+        for (index in 0..20) { //改为100时，不会崩，第3条内容变为4
             mItems.add(index.toString())
         }
 
@@ -42,7 +42,10 @@ class RecyclerViewNotifyTestActivity : AppCompatActivity() {
     }
 
     private fun changeAction() {
-        mAdapter.mItems.removeAt(3)
-        mAdapter.notifyItemRangeChanged(3, 1)
+        mItems.clear()
+        for (index in 100..120) { //改为100时，不会崩，第3条内容变为4
+            mItems.add(index.toString())
+        }
+        mAdapter.onDataSetChanged(mItems) //清空屏幕内所有可见item后全量刷，不会导致item位置跳动
     }
 }
