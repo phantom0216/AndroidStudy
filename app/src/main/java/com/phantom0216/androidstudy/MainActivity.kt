@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
         items.add("协程")
         items.add("viewpager2")
         items.add("MVI")
+        items.add("webview")
 
         mAdapter.onDataSetChanged(items)
     }
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
             0 -> ARouter.getInstance().build(RouterConfig.RECYCLERVIEWNOTIFY).navigation()
             2 -> ARouter.getInstance().build(RouterConfig.VIEWPAGERCLIP).navigation()
             3 -> ARouter.getInstance().build(RouterConfig.MVI).navigation()
+            4 -> ARouter.getInstance().build(RouterConfig.WEBVIEW).navigation()
         }
     }
 }
