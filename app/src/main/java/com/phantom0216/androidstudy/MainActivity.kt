@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
         items.add("viewpager2")
         items.add("MVI")
         items.add("webview")
+        items.add("grid")
 
         mAdapter.onDataSetChanged(items)
     }
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
             2 -> ARouter.getInstance().build(RouterConfig.VIEWPAGERCLIP).navigation()
             3 -> ARouter.getInstance().build(RouterConfig.MVI).navigation()
             4 -> ARouter.getInstance().build(RouterConfig.WEBVIEW).navigation()
+            5 -> ARouter.getInstance().build(RouterConfig.RECYCLERVIEWGRID).navigation()
         }
     }
 }
