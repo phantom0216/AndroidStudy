@@ -3,6 +3,7 @@ package com.phantom0216.androidstudy.recyclerview
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -63,15 +64,16 @@ class GridLayoutActivity : AppCompatActivity() {
 
             // 获取第几列
             val column = position % gridSize
-            val edgeH = dp2px(parent.context, 28)
+            val edgeH = dp2px(parent.context, 38)
             val itemWidth = dp2px(parent.context, 45)
 
             // p为每个Item都需要减去的间距，要是固定p也可反推出spaceH
             val  p = parent.width / gridSize - itemWidth
-            val spaceH = (p * gridSize - 2 * edgeH) / gridSize - 1
+            val spaceH = (p * gridSize - 2 * edgeH) / (gridSize - 1)
             val left = edgeH + column * (spaceH - p)
             val right = p - left
 
+            Log.d("outRect", "left: $left, right: $right, spaceH:$spaceH")
             outRect.left = left
             outRect.right = right
         }

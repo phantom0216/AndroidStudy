@@ -25,6 +25,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rate_icon"
-        android:text="很糟糕很糟糕很糟糕" />
+        android:text="很糟" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
