@@ -22,11 +22,7 @@ class MviHomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mvi)
         mTextView = findViewById(R.id.tv)
         val displayMetrics = resources.displayMetrics
-        val text = "widthPixels: " + displayMetrics.widthPixels + "\n" +
-                "heightPixels: " + displayMetrics.heightPixels + "\n" +
-                "xdpi: " + displayMetrics.xdpi + ", ydpi: " + displayMetrics.ydpi + "\n" +
-                ", densityDpi: " + displayMetrics.densityDpi + ", density: " + displayMetrics.density + "\n" +
-                "textSize: " + mTextView.textSize
+        val text = "widthPixels: " + displayMetrics.widthPixels
         mTextView.text = text
         mProgressBar = findViewById(R.id.progress_bar)
         lifecycleScope.launchWhenResumed {
@@ -39,6 +35,9 @@ class MviHomeActivity : AppCompatActivity() {
                 delay(tick.toLong())
             }
         }
+        val drawable = resources.getDrawable(R.drawable.ad_icon)
+        drawable.setBounds(-40, -40, 0, 0)
+        mTextView.setCompoundDrawables(drawable, null, null, null)
     }
 
 
