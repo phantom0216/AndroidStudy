@@ -1,13 +1,12 @@
 package com.phantom0216.androidstudy.view;
 
 import android.content.Context;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Outline;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewOutlineProvider;
 
 import androidx.annotation.ColorInt;
 
@@ -46,12 +45,12 @@ public class DotView extends View {
       paint.setStyle(Paint.Style.FILL);
       paint.setColor(Color.TRANSPARENT);
       //阴影方案1：ViewOutlineProvider+android:elevation
-      setOutlineProvider(new ViewOutlineProvider() {
-         @Override
-         public void getOutline(View view, Outline outline) {
-            outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), view.getHeight() / 2);
-         }
-      });
+      // setOutlineProvider(new ViewOutlineProvider() {
+      //    @Override
+      //    public void getOutline(View view, Outline outline) {
+      //       outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), view.getHeight() / 2);
+      //    }
+      // });
    }
 
    @Override
@@ -71,6 +70,8 @@ public class DotView extends View {
       paint.setColor(isSelected ? selectColor : normalColor);
       //阴影方案2：setShadowLayer
       // paint.setShadowLayer(12, 0F, 0F, Color.parseColor("#66000000"));
+      //阴影方案3：BlurMaskFilter，缺点无法设置阴影颜色
+      paint.setMaskFilter(new BlurMaskFilter(12, BlurMaskFilter.Blur.SOLID));
       canvas.drawCircle(width / 2, height / 2, radius, paint);
    }
 }
