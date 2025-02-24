@@ -1,5 +1,6 @@
 package com.phantom0216.androidstudy
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ class MainActivityRecyclerAdapter : BaseRecyclerAdapter<MainActivityRecyclerAdap
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
         holder.bindData(mItems[position])
+        Log.d("MainActivityRecyclerAdapter", "onBindViewHolder, $position")
     }
 
     fun onDataSetChanged(items: List<String>) {
@@ -28,6 +30,10 @@ class MainActivityRecyclerAdapter : BaseRecyclerAdapter<MainActivityRecyclerAdap
 
     override fun getItemCount(): Int {
         return mItems.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return mItems[position].hashCode().toLong()
     }
 
     class ItemViewHolder(private val viewBinding: MainListItemLayoutBinding) :

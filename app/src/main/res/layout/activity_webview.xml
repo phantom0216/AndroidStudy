@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="click"
+        android:background="@android:color/holo_red_light"/>
+
+    <TextView
+        android:id="@+id/clearBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:text="clear"
+        android:background="@android:color/holo_red_light" />
+
+    <TextView
+        android:id="@+id/preloadBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:text="preload"
+        android:background="@android:color/holo_red_light" />
+
+    <TextView
+        android:id="@+id/attachBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:layout_gravity="top|right"
+        android:text="attach"
+        android:background="@android:color/holo_red_light" />
 </FrameLayout>

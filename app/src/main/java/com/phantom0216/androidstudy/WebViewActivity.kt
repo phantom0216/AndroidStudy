@@ -1,12 +1,12 @@
 package com.phantom0216.androidstudy
 
-import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.AbsoluteLayout
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -14,26 +14,59 @@ import com.alibaba.android.arouter.facade.annotation.Route
 
 @Route(path = RouterConfig.WEBVIEW)
 class WebViewActivity: AppCompatActivity() {
+
+    private lateinit var mRootView: FrameLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WebView.setWebContentsDebuggingEnabled(true)
         setContentView(R.layout.activity_webview)
-        val webView = findViewById<View>(R.id.webview) as WebView
-        val header = TextView(this)
-        val params = AbsoluteLayout.LayoutParams(-1, 300, 0, 500)
-        header.text = "1234566"
-        header.setBackgroundColor(Color.RED)
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(
-                view: WebView,
-                request: WebResourceRequest
-            ): Boolean {
-                return super.shouldOverrideUrlLoading(view, request)
+        mRootView = findViewById(R.id.root_view)
+        val tv = findViewById<TextView>(R.id.btn)
+        tv.setOnClickListener {
+            val mWebView = WebView(this)
+            mWebView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+            mWebView.settings.allowUniversalAccessFromFileURLs = true
+            mWebView.settings.javaScriptEnabled = true
+            mWebView.settings.domStorageEnabled = true
+            mWebView.settings.databaseEnabled = true
+            mWebView.settings.blockNetworkImage = false
+            mWebView.webViewClient = object : WebViewClient() {
+                override fun shouldOverrideUrlLoading(
+                    view: WebView,
+                    request: WebResourceRequest
+                ): Boolean {
+                    return super.shouldOverrideUrlLoading(view, request)
+                }
+
+                override fun shouldInterceptRequest(
+                    view: WebView?,
+                    url: String?
+                ): WebResourceResponse? {
+                    return super.shouldInterceptRequest(view, url)
+                }
             }
+            WebViewPool.offer(mWebView)
         }
 
+        val clearBtn = findViewById<TextView>(R.id.clearBtn)
+        clearBtn.setOnClickListener {
+            WebViewPool.clear()
+        }
 
-         webView.addView(header, 0, params);
-//        webView.addView(header, params)
-        webView.loadUrl("http://www.qq.com")
+        val preloadBtn = findViewById<TextView>(R.id.preloadBtn)
+        preloadBtn.setOnClickListener {
+            WebViewPool.preload()
+        }
+
+        val attachBtn = findViewById<TextView>(R.id.attachBtn)
+        attachBtn.setOnClickListener {
+            val webView = WebViewPool.poll()
+            mRootView.addView(webView, 0)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

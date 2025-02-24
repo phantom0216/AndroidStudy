@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal"
+    android:background="@android:color/holo_red_light"
+    tools:ignore="MissingDefaultResource"
+    tools:parentTag="LinearLayout">
+
+    <TextView
+        android:id="@+id/comment_input"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_red_light"
+        android:text="说点啥..." />
+
+    <ImageView
+        android:id="@+id/clear_screen"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="22dp"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/clear_screen_down" />
+
+</LinearLayout>

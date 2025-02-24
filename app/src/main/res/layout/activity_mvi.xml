@@ -2,22 +2,22 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false">
-
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top"
         android:text="测试文本大小"
-        android:textSize="10dp"
-        android:layout_gravity="top"/>
+        android:textSize="10dp" />
 
     <ImageView
+        android:id="@+id/ad"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
-        android:src="@drawable/ad_icon"/>
+        android:src="@drawable/ad_icon" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -27,10 +27,28 @@
         android:indeterminateOnly="false"
         android:max="100"
         android:progress="0"
-        android:progressDrawable="@drawable/propress_drawable"/>
+        android:progressDrawable="@drawable/propress_drawable" />
 
-    <com.phantom0216.androidstudy.view.DotView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="124dp"
+            android:layout_height="70dp"
+            android:src="@drawable/banner" />
+
+        <com.phantom0216.androidstudy.view.LivePendantsIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_gravity="right|bottom"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="2dp" />
+
+    </FrameLayout>
 </FrameLayout>

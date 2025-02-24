@@ -26,6 +26,7 @@ class RecyclerViewNotifyTestActivity : AppCompatActivity() {
     private fun initViews() {
         mViewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         mAdapter = MainActivityRecyclerAdapter()
+        mAdapter.setHasStableIds(true)
         mViewBinding.recyclerView.adapter = mAdapter
 
         mViewBinding.changeBtn.setOnClickListener {
@@ -42,10 +43,10 @@ class RecyclerViewNotifyTestActivity : AppCompatActivity() {
     }
 
     private fun changeAction() {
-        mItems.clear()
-        for (index in 100..120) { //改为100时，不会崩，第3条内容变为4
-            mItems.add(index.toString())
-        }
+//        mItems.clear()
+//        for (index in 100..120) { //改为100时，不会崩，第3条内容变为4
+//            mItems.add(index.toString())
+//        }
         mAdapter.onDataSetChanged(mItems) //清空屏幕内所有可见item后全量刷，不会导致item位置跳动
     }
 }
