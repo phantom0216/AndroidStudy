@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
         items.add("MVI")
         items.add("webview")
         items.add("grid")
+        items.add("compose")
 
         mAdapter.onDataSetChanged(items)
     }
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity(), BaseRecyclerAdapter.OnItemClickListene
             3 -> ARouter.getInstance().build(RouterConfig.MVI).navigation()
             4 -> ARouter.getInstance().build(RouterConfig.WEBVIEW).navigation()
             5 -> ARouter.getInstance().build(RouterConfig.RECYCLERVIEWGRID).navigation()
+            6 -> ARouter.getInstance().build(RouterConfig.COMPOSE).navigation()
         }
     }
 }

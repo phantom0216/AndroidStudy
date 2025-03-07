@@ -48,6 +48,11 @@ android {
         // Note that the viewBinding.enabled property is now deprecated.
         viewBinding true
         dataBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0'
     }
 }
 
@@ -63,4 +68,14 @@ dependencies {
 
     implementation 'com.alibaba:arouter-api:1.5.1'
     kapt 'com.alibaba:arouter-compiler:1.5.1'
+
+    // Compose 核心库
+    implementation 'androidx.compose.ui:ui:1.2.1'
+    // Compose Material 设计库
+    implementation 'androidx.compose.material:material:1.2.1'
+    // Compose 预览支持
+    implementation 'androidx.compose.ui:ui-tooling-preview:1.2.1'
+    debugImplementation 'androidx.compose.ui:ui-tooling:1.2.1' // 调试工具
+    // Compose Activity 支持
+    implementation 'androidx.activity:activity-compose:1.5.1'
 }
